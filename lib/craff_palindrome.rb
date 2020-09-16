@@ -1,6 +1,18 @@
 require "craff_palindrome/version"
 
-module CraffPalindrome
-  class Error < StandardError; end
-  # Your code goes here...
+class String
+
+  # Returns true for a palindrome, false otherwise.
+  def palindrome?
+    processed_content == processed_content.reverse
+  end
+
+  private
+
+    # Returns content for palindrome testing.
+    def processed_content
+      letter_regex = /[a-z]/i
+      self.scan(letter_regex).join.downcase
+    end
+
 end
